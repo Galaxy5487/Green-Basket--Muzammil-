@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop Vegetables — GREENBASKET</title>
+  <meta name="description"
+    content="Browse and order fresh, pesticide-free vegetables harvested daily and delivered straight to your door.">
+  <meta name="theme-color" content="#1d6b45">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="navbar glass" aria-label="Main navigation">
+        <a href="index.html" class="brand" aria-label="GreenBasket home">
+          <span class="brand-mark">
+            <svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true">
+              <defs>
+                <linearGradient id="bmGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#3aa86c" />
+                  <stop offset="1" stop-color="#176040" />
+                </linearGradient>
+              </defs>
+              <rect width="44" height="44" rx="13" fill="url(#bmGrad)" />
+              <path
+                d="M22 9.5c4.9 0 8.8 3.9 8.8 8.7 0 .7-.5 1.2-1.2 1.2H14.4c-.7 0-1.2-.5-1.2-1.2 0-4.8 3.9-8.7 8.8-8.7Z"
+                fill="#dff3e5" />
+              <path d="M13.2 21.6h17.6l-1.8 9a3.1 3.1 0 0 1-3 2.5h-8a3.1 3.1 0 0 1-3-2.5l-1.8-9Z" fill="#ffffff" />
+              <path d="M18.4 25v4.6M22 25v4.6M25.6 25v4.6" stroke="#268a58" stroke-width="1.4" stroke-linecap="round"
+                opacity=".6" />
+            </svg>
+          </span>
+          <span class="brand-text">
+            <strong>GREENBASKET</strong>
+            <small>Fresh From Farm to Your Table</small>
+          </span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="shop.html" class="active" data-nav="shop">Shop</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="contact.html" data-nav="contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="cart-btn" id="cartBtn" aria-label="Open shopping basket">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 6h15l-1.6 8.4a2 2 0 0 1-2 1.6H9.3a2 2 0 0 1-2-1.6L5.6 4H3" />
+              <circle cx="9.5" cy="19.5" r="1.3" />
+              <circle cx="17" cy="19.5" r="1.3" />
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="wrap page-head">
+      <span class="eyebrow">Our Market</span>
+      <h1>Fresh Vegetables</h1>
+      <p class="lead">Hand-picked this morning from partner farms. Choose your quantity and we'll pack it fresh for you.
+      </p>
+    </div>
+
+    <div class="wrap" style="padding-bottom:40px;">
+      <div class="toolbar glass">
+        <label class="search" for="searchInput">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9"
+            stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.2-3.2" />
+          </svg>
+          <input type="search" id="searchInput" placeholder="Search vegetables…" autocomplete="off">
+        </label>
+        <div class="sort">
+          <select id="sortSelect" aria-label="Sort vegetables">
+            <option value="popular">Sort: Popular</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name">Name: A – Z</option>
+            <option value="rating">Top Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="chips" id="categoryChips"></div>
+
+      <div class="results-bar">
+        <span id="resultCount">14 products</span>
+        <button class="clear-btn" id="clearFilters">Clear filters</button>
+      </div>
+
+      <div class="product-grid" id="shopGrid"></div>
+
+      <div class="empty-state glass" id="emptyState">
+        <div class="es-ico">🧺</div>
+        <h3>No vegetables found</h3>
+        <p>Try a different search term or clear the filters to see everything.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <span class="brand-mark">
+              <svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true">
+                <rect width="44" height="44" rx="13" fill="#268a58" />
+                <path
+                  d="M22 9.5c4.9 0 8.8 3.9 8.8 8.7 0 .7-.5 1.2-1.2 1.2H14.4c-.7 0-1.2-.5-1.2-1.2 0-4.8 3.9-8.7 8.8-8.7Z"
+                  fill="#dff3e5" />
+                <path d="M13.2 21.6h17.6l-1.8 9a3.1 3.1 0 0 1-3 2.5h-8a3.1 3.1 0 0 1-3-2.5l-1.8-9Z" fill="#ffffff" />
+              </svg>
+            </span>
+            <span class="brand-text">
+              <strong>GREENBASKET</strong>
+              <small>Fresh From Farm to Your Table</small>
+            </span>
+          </a>
+          <p class="footer-about">Naturally grown vegetables from 50+ partner farms, harvested to order and delivered to
+            your kitchen within 24 hours.</p>
+          <div class="socials">
+            <a href="contact.html" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"
+                aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="1" />
+              </svg>
+            </a>
+            <a href="contact.html" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M14 8h2.5V4.5H14a4 4 0 0 0-4 4V11H8v3.5h2V20h3.5v-5.5H16l.5-3.5h-3V9a1 1 0 0 1 1-1Z" />
+              </svg>
+            </a>
+            <a href="contact.html" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" aria-hidden="true">
+                <path
+                  d="M20 5.6a7.4 7.4 0 0 1-2.1.6 3.7 3.7 0 0 0 1.6-2 7.4 7.4 0 0 1-2.3.9 3.7 3.7 0 0 0-6.3 3.4A10.5 10.5 0 0 1 3.4 4.8a3.7 3.7 0 0 0 1.1 4.9 3.6 3.6 0 0 1-1.7-.5A3.7 3.7 0 0 0 5.8 11a3.7 3.7 0 0 1-1.7.1 3.7 3.7 0 0 0 3.5 2.6A10.5 10.5 0 0 1 3 15.4a14.8 14.8 0 0 0 8-2.3c2.9-1.7 4.6-4.4 4.6-7.3V5.2A7.4 7.4 0 0 0 20 5.6Z" />
+              </svg>
+            </a>
+            <a href="contact.html" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"
+                stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="6" width="18" height="12" rx="4" />
+                <path d="m11 9.6 4 2.4-4 2.4z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Shop</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=leafy">Leafy Greens</a></li>
+            <li><a href="shop.html?category=root">Root Vegetables</a></li>
+            <li><a href="shop.html?category=cruciferous">Cruciferous</a></li>
+            <li><a href="shop.html?category=herbs">Herbs &amp; Spices</a></li>
+            <li><a href="shop.html">Seasonal Specials</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">Our Farmers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Careers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Get in Touch</h4>
+          <ul class="footer-contact">
+            <li><span>📞</span> +91 98450 22117</li>
+            <li><span>✉️</span> hello@greenbasket.farm</li>
+            <li><span>🕒</span> Mon – Sat, 7 AM – 8 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year">2025</span> GreenBasket. All rights reserved.</span>
+        <span>Grown responsibly · Packed plastic-free · Delivered daily</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= CART ================= -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping basket" aria-hidden="true">
+    <div class="cart-head">
+      <div>
+        <h2>Your Basket</h2>
+        <small id="cartSubLabel">0 items</small>
+      </div>
+      <button class="icon-btn" id="cartClose" aria-label="Close basket">✕</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-foot" id="cartFoot">
+      <div class="delivery-hint" id="deliveryHint">Add ₹499 more for free delivery</div>
+      <div class="sum-row"><span>Subtotal</span><span id="sumSubtotal">₹0</span></div>
+      <div class="sum-row"><span>Delivery</span><span id="sumDelivery">₹0</span></div>
+      <div class="sum-row total"><span>Total</span><span class="val" id="sumTotal">₹0</span></div>
+      <button class="btn btn-primary" id="checkoutBtn" style="width:100%;margin-top:6px;">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- ================= TOASTS + TOP ================= -->
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
